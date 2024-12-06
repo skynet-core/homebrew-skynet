@@ -12,7 +12,6 @@ class OpenmpAT19 < Formula
   keg_only :versioned_formula
 
   depends_on "cmake" => :build
-  depends_on "lld@19" => :build
   depends_on "llvm@19" => :build
   depends_on "ninja" => :build
 
@@ -21,7 +20,7 @@ class OpenmpAT19 < Formula
     args = %W[
       -DCMAKE_C_COMPILER=#{Formula["llvm@19"].opt_bin/"clang"}
       -DCMAKE_CXX_COMPILER=#{Formula["llvm@19"].opt_bin/"clang++"}
-      -DCMAKE_LINKER=#{Formula["lld@19"].opt_bin/"lld"}
+      -DCMAKE_LINKER=#{Formula["llvm@19"].opt_bin/"llvm-link"}
       -DOPENMP_STANDALONE_BUILD=ON
       -DENABLE_LIBOMPTARGET=ON
     ]
