@@ -19,10 +19,9 @@ class AdaptiveCpp < Formula
   depends_on "ninja" => :build
   depends_on "boost"
   depends_on :linux
-  depends_on "lld"
-  depends_on "llvm"
+  depends_on "llvm@19"
   depends_on "opencl-icd-loader"
-  depends_on "openmp"
+  depends_on "openmp@19"
 
   def install
     platforms_code = <<~EOS
@@ -41,16 +40,16 @@ class AdaptiveCpp < Formula
       }
     EOS
 
-    ENV.append "CFLAGS", "-I#{Formula["openmp"].opt_include}"
-    ENV.append "CXXFLAGS", "-I#{Formula["openmp"].opt_include}"
-    ENV.append "LDFLAGS", "-L#{Formula["openmp"].opt_lib} -L#{Formula["opencl-icd-loader"].opt_lib}"
+    ENV.append "CFLAGS", "-I#{Formula["openmp@19"].opt_include}"
+    ENV.append "CXXFLAGS", "-I#{Formula["openmp@19"].opt_include}"
+    ENV.append "LDFLAGS", "-L#{Formula["openmp@19"].opt_lib} -L#{Formula["opencl-icd-loader"].opt_lib}"
 
     args = %W[
-      -DCMAKE_C_COMPILER=#{Formula["llvm"].opt_bin/"clang"}
-      -DCMAKE_CXX_COMPILER=#{Formula["llvm"].opt_bin/"clang++"}
+      -DCMAKE_C_COMPILER=#{Formula["llvm@19"].opt_bin/"clang"}
+      -DCMAKE_CXX_COMPILER=#{Formula["llvm@19"].opt_bin/"clang++"}
       -DCMAKE_CXX_STANDARD=17
-      -DCMAKE_LINKER=#{Formula["lld"].opt_bin/"lld"}
-      -DLLVM_DIR=#{Formula["llvm"].opt_lib/"llvm/cmake/llvm"}
+      -DCMAKE_LINKER=#{Formula["llvm@19"].opt_bin/"llvm-link"}
+      -DLLVM_DIR=#{Formula["llvm@19"].opt_lib/"llvm/cmake/llvm"}
       -DBOOST_ROOT=#{Formula["boost"]}
     ]
 
