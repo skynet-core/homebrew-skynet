@@ -2,14 +2,14 @@
 
 ## How do I install these formulae?
 
-`brew install skynet-core/core/<formula>`
+`brew install skynet-core/skynet/<formula>`
 
-Or `brew tap skynet-core/core` and then `brew install <formula>`.
+Or `brew tap skynet-core/skynet` and then `brew install <formula>`.
 
 Or, in a [`brew bundle`](https://github.com/Homebrew/homebrew-bundle) `Brewfile`:
 
 ```ruby
-tap "skynet-core/core"
+tap "skynet-core/skynet"
 brew "<formula>"
 ```
 
