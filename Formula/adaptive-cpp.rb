@@ -13,8 +13,6 @@ class AdaptiveCpp < Formula
     regex(%r{/develop\.tar\.gz$/}i)
   end
 
-  keg_only :versioned_formula
-
   depends_on "cmake" => :build
   depends_on "ninja" => :build
   depends_on "boost"
