@@ -1,6 +1,6 @@
 class OpenmpAT18 < Formula
   desc "LLVM Project OpenMP Runtime"
-  homepage "http://llvm.org"
+  homepage "https://llvm.org"
   url "https://github.com/llvm/llvm-project/releases/download/llvmorg-18.1.8/llvm-project-18.1.8.src.tar.xz"
   sha256 "0b58557a6d32ceee97c8d533a59b9212d87e0fc4d2833924eb6c611247db2f2a"
   license "Apache-2.0" => { with: "LLVM-exception" }
