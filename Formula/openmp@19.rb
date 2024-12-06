@@ -4,8 +4,6 @@ class OpenmpAt19 < Formula
   url "https://github.com/llvm/llvm-project/releases/download/llvmorg-19.1.5/llvm-project-19.1.5.src.tar.xz"
   sha256 "bd8445f554aae33d50d3212a15e993a667c0ad1b694ac1977f3463db3338e542"
   license "Apache-2.0" => { with: "LLVM-exception" }
-  head "https://github.com/llvm/llvm-project.git", branch: "main"
-
   livecheck do
     url :stable
     regex(%r{/^llvmorg[._-]v?(\d+(?:\.\d+)+)$/}i)
