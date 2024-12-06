@@ -1,5 +1,5 @@
 class AdaptiveCppAT24060 < Formula
-  desc "Implementation of SYCL and C++ standard parallelism for CPUs and GPUs from all vendors."
+  desc "SYCL and C++ standard parallelism for CPUs and GPUs from all vendors."
   homepage "https://adaptivecpp.github.io/"
   url "https://github.com/AdaptiveCpp/AdaptiveCpp/archive/refs/tags/v24.06.0.tar.gz"
   sha256 "cfa117722fd50295de8b9e1d374a0de0aa2407a47439907972e8e3d9795aa285"
@@ -50,7 +50,7 @@ class AdaptiveCppAT24060 < Formula
       -DBOOST_ROOT=#{Formula["boost@1.86"]}
     ]
 
-      system "cmake", "-G", "Ninja", "-S", ".", "-B","build", *(std_cmake_args + args)
+      system "cmake", "-G", "Ninja", "-S", ".", "-B", "build", *(std_cmake_args + args)
       system "cmake", "--build", "build"
       system "cmake", "--build", "build", "--target", "install"
 
@@ -58,8 +58,7 @@ class AdaptiveCppAT24060 < Formula
       
       system "#{bin}/acpp", "-O3", "build/platforms.cpp", "-o", "build/platforms"
       ohai "Running the SYCL example to list supported platforms and devices:"
-      output = `./build/platforms`
-      puts output
+      puts `./build/platforms`
       ohai "AdaptiveCpp installation completed"
   end
 

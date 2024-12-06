@@ -1,5 +1,5 @@
 class AdaptiveCpp < Formula
-  desc "Implementation of SYCL and C++ standard parallelism for CPUs and GPUs from all vendors."
+  desc "SYCL and C++ standard parallelism for CPUs and GPUs from all vendors."
   homepage "https://adaptivecpp.github.io/"
   version "1.0"
   license "BSD-2-Clause"
@@ -58,7 +58,7 @@ class AdaptiveCpp < Formula
       -DBOOST_ROOT=#{Formula["boost"]}
     ]
 
-      system "cmake", "-G", "Ninja", "-S", ".", "-B","build", *(std_cmake_args + args)
+      system "cmake", "-G", "Ninja", "-S", ".", "-B", "build", *(std_cmake_args + args)
       system "cmake", "--build", "build"
       system "cmake", "--build", "build", "--target", "install"
 
@@ -66,8 +66,7 @@ class AdaptiveCpp < Formula
       
       system "#{bin}/acpp", "-O3", "build/platforms.cpp", "-o", "build/platforms"
       ohai "Running the SYCL example to list supported platforms and devices:"
-      output = `./build/platforms`
-      puts output
+      puts `./build/platforms`
       ohai "AdaptiveCpp installation completed"
   end
 
