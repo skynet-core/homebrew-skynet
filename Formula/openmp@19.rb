@@ -1,4 +1,4 @@
-class OpenmpAt19 < Formula
+class OpenmpAT19 < Formula
   desc "LLVM Project OpenMP Runtime"
   homepage "https://llvm.org"
   url "https://github.com/llvm/llvm-project/releases/download/llvmorg-19.1.5/llvm-project-19.1.5.src.tar.xz"
