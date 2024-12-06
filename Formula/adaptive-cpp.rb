@@ -2,7 +2,7 @@ class AdaptiveCpp < Formula
   desc "SYCL and C++ standard parallelism for CPUs and GPUs from all vendors"
   homepage "https://adaptivecpp.github.io/"
   url "https://github.com/AdaptiveCpp/AdaptiveCpp/archive/refs/heads/develop.tar.gz"
-  version "1.0"
+  version "develop"
   sha256 "ff3d70f52a7ee2db29957e44adc3c59f4f6f6ef05fedd0c0abc02ed18f51c766"
   license "BSD-2-Clause"
   head "https://github.com/AdaptiveCpp/AdaptiveCpp.git", branch: "develop"

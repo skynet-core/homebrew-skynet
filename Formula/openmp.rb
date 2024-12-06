@@ -2,7 +2,6 @@ class Openmp < Formula
   desc "LLVM Project OpenMP Runtime"
   homepage "http://llvm.org"
   url "https://github.com/llvm/llvm-project/releases/download/llvmorg-19.1.5/llvm-project-19.1.5.src.tar.xz"
-  version "1.0"
   sha256 "bd8445f554aae33d50d3212a15e993a667c0ad1b694ac1977f3463db3338e542"
   license "Apache-2.0" => { with: "LLVM-exception" }
   head "https://github.com/llvm/llvm-project.git", branch: "main"
@@ -11,6 +10,8 @@ class Openmp < Formula
     url :stable
     regex(%r{/^llvmorg[._-]v?(\d+(?:\.\d+)+)$/}i)
   end
+
+  keg_only :versioned_formula
 
   depends_on "cmake" => :build
   depends_on "lld" => :build
