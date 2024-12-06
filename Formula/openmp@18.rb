@@ -1,5 +1,5 @@
 class OpenmpAT18 < Formula
-  desc "The LLVM Project OpenMP Runtime"
+  desc "LLVM Project OpenMP Runtime"
   homepage "http://llvm.org"
   url "https://github.com/llvm/llvm-project/releases/download/llvmorg-18.1.8/llvm-project-18.1.8.src.tar.xz"
   sha256 "0b58557a6d32ceee97c8d533a59b9212d87e0fc4d2833924eb6c611247db2f2a"
@@ -7,14 +7,14 @@ class OpenmpAT18 < Formula
 
   livecheck do
     url :stable
-    regex(/^llvmorg[._-]v?(18(?:\.\d+)+)$/i)
+    regex(%r{/^llvmorg[._-]v?(18(?:\.\d+)+)$/}i)
   end
 
-  depends_on "cmake" => :build
-  depends_on "ninja" => :build
-  depends_on "llvm@18" => :build
-
   keg_only :versioned_formula
+
+  depends_on "cmake" => :build
+  depends_on "llvm@18" => :build
+  depends_on "ninja" => :build
 
   def install
     omppath = buildpath/"openmp"
