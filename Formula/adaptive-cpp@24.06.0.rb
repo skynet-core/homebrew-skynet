@@ -1,5 +1,5 @@
 class AdaptiveCppAT24060 < Formula
-  desc "Implementation of SYCL and C++ standard parallelism for CPUs and GPUs from all vendors: The independent, community-driven compiler for C++-based heterogeneous programming models. Lets applications adapt themselves to all the hardware in the system - even at runtime!"
+  desc "Implementation of SYCL and C++ standard parallelism for CPUs and GPUs from all vendors."
   homepage "https://adaptivecpp.github.io/"
   url "https://github.com/AdaptiveCpp/AdaptiveCpp/archive/refs/tags/v24.06.0.tar.gz"
   sha256 "cfa117722fd50295de8b9e1d374a0de0aa2407a47439907972e8e3d9795aa285"
@@ -12,13 +12,13 @@ class AdaptiveCppAT24060 < Formula
 
   keg_only :versioned_formula
 
-  depends_on :linux
   depends_on "cmake" => :build
   depends_on "ninja" => :build
-  depends_on "llvm@18"
+  depends_on :linux
   depends_on "boost@1.86"
-  depends_on "openmp@18"
   depends_on "opencl-icd-loader"
+  depends_on "openmp@18"
+  depends_on "llvm@18"
 
   def install
     platforms_code = <<~EOS
@@ -26,17 +26,16 @@ class AdaptiveCppAT24060 < Formula
     #include <sycl/sycl.hpp>
     int main() {
       auto platforms = sycl::platform::get_platforms();
-      for (const auto &platform : platforms) { 
+      for (const auto &platform : platforms) {
         std::cout << "Platform: " << platform.get_info<sycl::info::platform::name>() << std::endl;
-        auto devices = platform.get_devices(); 
-        for (const auto &device : devices) { 
+        auto devices = platform.get_devices();
+        for (const auto &device : devices) {
           std::cout << "\\tDevice: " << device.get_info<sycl::info::device::name>() << std::endl;
         }
-      } 
+      }
       return 0;
     }
     EOS
-
 
     ENV.append "CFLAGS", "-I#{Formula["openmp@18"].opt_include}"
     ENV.append "CXXFLAGS", "-I#{Formula["openmp@18"].opt_include}"
