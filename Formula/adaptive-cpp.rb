@@ -23,10 +23,10 @@ class AdaptiveCpp < Formula
   depends_on "ninja" => :build
   depends_on :linux
   depends_on "opencl-icd-loader"
-  depends_on "openmp"
   depends_on "boost"
   depends_on "lld"
   depends_on "llvm"
+  depends_on "openmp"
   
   def install
     platforms_code = <<~EOS

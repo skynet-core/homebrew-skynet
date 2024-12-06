@@ -16,9 +16,9 @@ class AdaptiveCppAT24060 < Formula
   depends_on "ninja" => :build
   depends_on :linux
   depends_on "boost@1.86"
+  depends_on "llvm@18"
   depends_on "opencl-icd-loader"
   depends_on "openmp@18"
-  depends_on "llvm@18"
 
   def install
     platforms_code = <<~EOS

@@ -1,5 +1,5 @@
 class Openmp < Formula
-  desc "The LLVM Project is a collection of modular and reusable compiler and toolchain technologies."
+  desc "The LLVM Project OpenMP Runtime"
   homepage "http://llvm.org"
   version "1.0"
   license "Apache-2.0" => { with: "LLVM-exception" }
