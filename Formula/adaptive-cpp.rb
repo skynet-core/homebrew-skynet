@@ -1,9 +1,9 @@
 class AdaptiveCpp < Formula
   desc "SYCL and C++ standard parallelism for CPUs and GPUs from all vendors"
   homepage "https://adaptivecpp.github.io/"
-  url "https://github.com/AdaptiveCpp/AdaptiveCpp/archive/refs/heads/develop.tar.gz"
+  url "https://github.com/AdaptiveCpp/AdaptiveCpp/archive/2d47fb0d533db54dbba3bf803f3997ac95929241.zip"
   version "develop"
-  sha256 "6c46086d03e9c1d1af8784a432c342ebac2023288951a7cdeec45ed1cb583d06"
+  sha256 "93a4aaf0766fd720ced5ebc0564fa8d77b880776ff380c1f5deb5e404e2cb168"
   license "BSD-2-Clause"
   head "https://github.com/AdaptiveCpp/AdaptiveCpp.git", branch: "develop"
   # Currently LLVM 19 support does not implemented in stable
