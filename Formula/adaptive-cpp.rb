@@ -13,9 +13,9 @@ class AdaptiveCpp < Formula
     regex(%r{/develop\.tar\.gz$/}i)
   end
 
+  depends_on "boost"
   depends_on "cmake"
   depends_on "ninja"
-  depends_on "boost"
   depends_on :linux
   depends_on "llvm@19"
   depends_on "opencl-icd-loader"
