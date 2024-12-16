@@ -47,7 +47,7 @@ class AdaptiveCppAT24060 < Formula
       -DCMAKE_CXX_STANDARD=17
       -DCMAKE_LINKER=#{Formula["llvm@18"].opt_bin/"lld"}
       -DLLVM_DIR=#{Formula["llvm@18"].opt_lib/"llvm/cmake/llvm"}
-      -DBOOST_ROOT=#{Formula["boost@1.86"]}
+      -DBOOST_ROOT=#{Formula["boost"]}
     ]
 
     system "cmake", "-G", "Ninja", "-S", ".", "-B", "build", *(std_cmake_args + args)

@@ -3,7 +3,7 @@ class AdaptiveCpp < Formula
   homepage "https://adaptivecpp.github.io/"
   url "https://github.com/AdaptiveCpp/AdaptiveCpp/archive/bd84cff8efa8851c16270af9f2e6c353715b01cb.tar.gz"
   version "develop"
-  sha256 "93a4aaf0766fd720ced5ebc0564fa8d77b880776ff380c1f5deb5e404e2cb168"
+  sha256 "ad657ea5f2db0068b18f4985418cc4293007df7ef9d8a2e733f66f87281062ac"
   license "BSD-2-Clause"
   head "https://github.com/AdaptiveCpp/AdaptiveCpp.git", branch: "develop"
   # Currently LLVM 19 support does not implemented in stable
