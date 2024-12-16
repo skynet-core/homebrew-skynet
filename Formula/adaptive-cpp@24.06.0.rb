@@ -14,7 +14,7 @@ class AdaptiveCppAT24060 < Formula
 
   depends_on "cmake"
   depends_on "ninja"
-  depends_on "boost@1.87"
+  depends_on "boost"
   depends_on :linux
   depends_on "llvm@18"
   depends_on "opencl-icd-loader"
