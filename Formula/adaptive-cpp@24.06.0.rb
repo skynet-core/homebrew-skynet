@@ -12,9 +12,9 @@ class AdaptiveCppAT24060 < Formula
 
   keg_only :versioned_formula
 
-  depends_on "cmake" => :build
-  depends_on "ninja" => :build
-  depends_on "boost@1.86"
+  depends_on "cmake"
+  depends_on "ninja"
+  depends_on "boost@1.87"
   depends_on :linux
   depends_on "llvm@18"
   depends_on "opencl-icd-loader"

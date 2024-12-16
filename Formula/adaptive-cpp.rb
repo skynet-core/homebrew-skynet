@@ -1,7 +1,7 @@
 class AdaptiveCpp < Formula
   desc "SYCL and C++ standard parallelism for CPUs and GPUs from all vendors"
   homepage "https://adaptivecpp.github.io/"
-  url "https://github.com/AdaptiveCpp/AdaptiveCpp/archive/2d47fb0d533db54dbba3bf803f3997ac95929241.zip"
+  url "https://github.com/AdaptiveCpp/AdaptiveCpp/archive/bd84cff8efa8851c16270af9f2e6c353715b01cb.zip"
   version "develop"
   sha256 "93a4aaf0766fd720ced5ebc0564fa8d77b880776ff380c1f5deb5e404e2cb168"
   license "BSD-2-Clause"
@@ -13,8 +13,8 @@ class AdaptiveCpp < Formula
     regex(%r{/develop\.tar\.gz$/}i)
   end
 
-  depends_on "cmake" => :build
-  depends_on "ninja" => :build
+  depends_on "cmake"
+  depends_on "ninja"
   depends_on "boost"
   depends_on :linux
   depends_on "llvm@19"
