@@ -1,8 +1,8 @@
 class OpenmpAT19 < Formula
   desc "LLVM Project OpenMP Runtime"
   homepage "https://llvm.org"
-  url "https://github.com/llvm/llvm-project/releases/download/llvmorg-19.1.5/llvm-project-19.1.5.src.tar.xz"
-  sha256 "bd8445f554aae33d50d3212a15e993a667c0ad1b694ac1977f3463db3338e542"
+  url "https://github.com/llvm/llvm-project/releases/download/llvmorg-19.1.6/llvm-project-19.1.6.src.tar.xz"
+  sha256 "e3f79317adaa9196d2cfffe1c869d7c100b7540832bc44fe0d3f44a12861fa34"
   license "Apache-2.0" => { with: "LLVM-exception" }
   livecheck do
     url :stable
