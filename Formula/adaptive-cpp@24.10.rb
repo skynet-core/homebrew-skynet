@@ -1,17 +1,16 @@
 class AdaptiveCpp < Formula
   desc "SYCL and C++ standard parallelism for CPUs and GPUs from all vendors"
   homepage "https://adaptivecpp.github.io/"
-  url "https://github.com/AdaptiveCpp/AdaptiveCpp/archive/bd84cff8efa8851c16270af9f2e6c353715b01cb.tar.gz"
-  version "develop"
-  sha256 "ad657ea5f2db0068b18f4985418cc4293007df7ef9d8a2e733f66f87281062ac"
+  url "https://github.com/AdaptiveCpp/AdaptiveCpp/archive/refs/tags/v24.10.0.tar.gz"
+  sha256 "cfa117722fd50295de8b9e1d374a0de0aa2407a47439907972e8e3d9795aa285"
   license "BSD-2-Clause"
-  head "https://github.com/AdaptiveCpp/AdaptiveCpp.git", branch: "develop"
-  # Currently LLVM 19 support does not implemented in stable
 
   livecheck do
     url :stable
-    regex(%r{/develop\.tar\.gz$/}i)
+    regex(%r{/v24\.([.\d]+)tar\.gz$/}i)
   end
+
+  keg_only :versioned_formula
 
   depends_on "boost"
   depends_on "cmake"
