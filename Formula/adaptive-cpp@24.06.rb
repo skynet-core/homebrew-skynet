@@ -1,4 +1,4 @@
-class AdaptiveCppAT24060 < Formula
+class AdaptiveCppAT2406 < Formula
   desc "SYCL and C++ standard parallelism for CPUs and GPUs from all vendors"
   homepage "https://adaptivecpp.github.io/"
   url "https://github.com/AdaptiveCpp/AdaptiveCpp/archive/refs/tags/v24.06.0.tar.gz"
