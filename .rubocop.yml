@@ -5,3 +5,10 @@ Style/StringLiterals:
     - single_quotes
 Style/StringLiteralsInInterpolation:
   EnforcedStyle: double_quotes
+Layout/LineLength:
+  Max: 116
+Style/SymbolArray:
+  EnforcedStyle: brackets
+  SupportedStyles:
+    - brackets
+    - percent

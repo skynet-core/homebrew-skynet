@@ -15,7 +15,7 @@ class LibclcAT19 < Formula
   keg_only :versioned_formula
 
   depends_on "cmake" => :build
-  depends_on "llvm@19" => %i[build test]
+  depends_on "llvm@19" => [:build, :test]
   depends_on :linux
   depends_on "spirv-llvm-translator@19" => :build
 
