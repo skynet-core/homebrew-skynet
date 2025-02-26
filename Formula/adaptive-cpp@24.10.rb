@@ -48,6 +48,7 @@ class AdaptiveCppAT2410 < Formula
       -DCMAKE_LINKER=#{Formula["llvm@19"].opt_bin/"llvm-link"}
       -DLLVM_DIR=#{Formula["llvm@19"].opt_lib/"llvm/cmake/llvm"}
       -DBOOST_ROOT=#{Formula["boost"]}
+      -DWITH_OPENCL_BACKEND=ON
     ]
 
     system "cmake", "-G", "Ninja", "-S", ".", "-B", "build", *(std_cmake_args + args)
