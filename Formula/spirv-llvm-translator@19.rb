@@ -11,12 +11,8 @@ class SpirvLlvmTranslatorAT19 < Formula
   depends_on "llvm@19"
   depends_on :linux
 
-  def llvm
-    deps.map(&:to_formula).find { |f| f.name.match?(/llvm@19/) }
-  end
-
   def install
-    ENV.append "LDFLAGS", "-Wl,-rpath,#{rpath(target: llvm.opt_lib)}" if OS.linux?
+    ENV.append "LDFLAGS", "-Wl,-rpath,#{rpath(target: Formula["llvm@19"].opt_lib)}" if OS.linux?
     system "cmake", "-S", ".", "-B", "build",
                     "-DBUILD_SHARED_LIBS=ON",
                     "-DCMAKE_INSTALL_RPATH=#{rpath}",
@@ -36,7 +32,7 @@ class SpirvLlvmTranslatorAT19 < Formula
         ret void
       }
     EOS
-    system llvm.opt_bin/"llvm-as", "test.ll"
+    system Formula["llvm@19"].opt_bin/"llvm-as", "test.ll"
     system bin/"llvm-spirv", "test.bc"
     assert_path_exists testpath/"test.spv"
   end
