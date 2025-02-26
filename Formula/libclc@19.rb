@@ -10,17 +10,9 @@ class LibclcAT19 < Formula
     regex(/^llvmorg[._-]v?(\d+(?:\.\d+)+)$/i)
   end
 
-  bottle do
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "34d2546339cfe4a4e6b59342c748769187ba560a2e6b314a32c40f953d4e596a"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "34d2546339cfe4a4e6b59342c748769187ba560a2e6b314a32c40f953d4e596a"
-    sha256 cellar: :any_skip_relocation, arm64_ventura: "34d2546339cfe4a4e6b59342c748769187ba560a2e6b314a32c40f953d4e596a"
-    sha256 cellar: :any_skip_relocation, sonoma:        "34d2546339cfe4a4e6b59342c748769187ba560a2e6b314a32c40f953d4e596a"
-    sha256 cellar: :any_skip_relocation, ventura:       "34d2546339cfe4a4e6b59342c748769187ba560a2e6b314a32c40f953d4e596a"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "ef445f4088c23fe0189b67d868fce5843e434ac52ee90a9993ee73558b4fb518"
-  end
-
   depends_on "cmake" => :build
   depends_on "llvm@19" => [:build, :test]
+  depends_on :linux
   depends_on "spirv-llvm-translator@19" => :build
 
   def install

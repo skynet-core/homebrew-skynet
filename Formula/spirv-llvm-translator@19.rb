@@ -5,19 +5,11 @@ class SpirvLlvmTranslatorAT19 < Formula
   sha256 "8f15eb0c998ca29ac59dab25be093d41f36d77c215f54ad9402a405495bea183"
   license "Apache-2.0" => { with: "LLVM-exception" }
 
-  bottle do
-    sha256 cellar: :any,                 arm64_sequoia: "d5eb10fb69bb946e25288b9337dc2b1a1c9fd68866086a1de20caf81de6d0407"
-    sha256 cellar: :any,                 arm64_sonoma:  "cea0245fedeaed2fcdaf4c0b7378fe4562e5eadb64b2250af7d37490cf928302"
-    sha256 cellar: :any,                 arm64_ventura: "03f27c121012ec284115979242b73922573daba9241ea14df78ee5dc78eab17b"
-    sha256 cellar: :any,                 sonoma:        "ffdfbaad3b2629eb0299922f8818fffa15dddf41b7ec56044fa023c0f1bfc89a"
-    sha256 cellar: :any,                 ventura:       "e6c7a76b232383d8bc1842f9faad26bfc34142d6fe51bf0919470226c8a13285"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "ba0b3e628db64a0d120b085974e59d2fe65f27b6cc21a9bfbfe352399ac420cf"
-  end
-
   depends_on "cmake" => :build
   depends_on "pkgconf" => :build
   depends_on "spirv-headers" => :build
   depends_on "llvm@19"
+  depends_on :linux
 
   def llvm
     deps.map(&:to_formula).find { |f| f.name.match?(/^llvm@19$/) }
