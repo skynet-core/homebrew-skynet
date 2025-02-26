@@ -6,7 +6,7 @@ Style/StringLiterals:
 Style/StringLiteralsInInterpolation:
   EnforcedStyle: double_quotes
 Layout/LineLength:
-  Max: 116
+  Max: 126
 Style/SymbolArray:
   EnforcedStyle: brackets
   SupportedStyles:

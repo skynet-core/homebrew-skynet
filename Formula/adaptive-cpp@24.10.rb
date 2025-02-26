@@ -16,7 +16,6 @@ class AdaptiveCppAT2410 < Formula
 
   depends_on "cmake" => :build
   depends_on "boost"
-  depends_on "libclc@19"
   depends_on :linux
   depends_on "llvm@19"
   depends_on "ninja" => :build
@@ -40,10 +39,9 @@ class AdaptiveCppAT2410 < Formula
       }
     EOS
 
-    ENV.append "CFLAGS", "-I#{Formula["openmp@19"].opt_include} -I#{Formula["libclc@19"].opt_include}"
-    ENV.append "CXXFLAGS", "-I#{Formula["openmp@19"].opt_include} -I#{Formula["libclc@19"].opt_include}"
-    ENV.append "LDFLAGS",
-               "-L#{Formula["libclc@19"].opt_lib} -L#{Formula["openmp@19"].opt_lib} -L#{Formula["opencl-icd-loader"].opt_lib}"
+    ENV.append "CFLAGS", "-I#{Formula["openmp@19"].opt_include}"
+    ENV.append "CXXFLAGS", "-I#{Formula["openmp@19"].opt_include}"
+    ENV.append "LDFLAGS", "-L#{Formula["openmp@19"].opt_lib} -L#{Formula["opencl-icd-loader"].opt_lib}"
 
     args = %W[
       -DCMAKE_C_COMPILER=#{Formula["llvm@19"].opt_bin / "clang"}
