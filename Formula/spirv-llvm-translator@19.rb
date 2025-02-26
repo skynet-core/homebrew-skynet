@@ -5,6 +5,8 @@ class SpirvLlvmTranslatorAT19 < Formula
   sha256 "8f15eb0c998ca29ac59dab25be093d41f36d77c215f54ad9402a405495bea183"
   license "Apache-2.0" => { with: "LLVM-exception" }
 
+  keg_only :versioned_formula
+  
   depends_on "cmake" => :build
   depends_on "pkgconf" => :build
   depends_on "spirv-headers" => :build

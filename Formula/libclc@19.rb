@@ -10,6 +10,8 @@ class LibclcAT19 < Formula
     regex(/^llvmorg[._-]v?(\d+(?:\.\d+)+)$/i)
   end
 
+  keg_only :versioned_formula
+
   depends_on "cmake" => :build
   depends_on "llvm@19" => [:build, :test]
   depends_on :linux
