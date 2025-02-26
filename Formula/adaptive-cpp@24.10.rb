@@ -13,8 +13,8 @@ class AdaptiveCppAT2410 < Formula
   keg_only :versioned_formula
 
   depends_on "boost"
-  depends_on "libclc@19"
   depends_on "cmake"
+  depends_on "libclc@19"
   depends_on :linux
   depends_on "llvm@19"
   depends_on "ninja"
