@@ -1,11 +1,11 @@
 # typed: true
 
 class AdaptiveCppAT2410 < Formula
-  desc 'SYCL and C++ standard parallelism for CPUs and GPUs from all vendors'
-  homepage 'https://adaptivecpp.github.io/'
-  url 'https://github.com/AdaptiveCpp/AdaptiveCpp/archive/refs/tags/v24.10.0.tar.gz'
-  sha256 '3bcd94eee41adea3ccc58390498ec9fd30e1548af5330a319be8ce3e034a6a0b'
-  license 'BSD-2-Clause'
+  desc "SYCL and C++ standard parallelism for CPUs and GPUs from all vendors"
+  homepage "https://adaptivecpp.github.io"
+  url "https://github.com/AdaptiveCpp/AdaptiveCpp/archive/refs/tags/v24.10.0.tar.gz"
+  sha256 "3bcd94eee41adea3ccc58390498ec9fd30e1548af5330a319be8ce3e034a6a0b"
+  license "BSD-2-Clause"
 
   livecheck do
     url :stable
@@ -14,14 +14,14 @@ class AdaptiveCppAT2410 < Formula
 
   keg_only :versioned_formula
 
-  depends_on 'boost'
-  depends_on 'cmake' => :build
-  depends_on 'libclc@19'
+  depends_on "boost"
+  depends_on "cmake" => :build
+  depends_on "libclc@19"
   depends_on :linux
-  depends_on 'llvm@19'
-  depends_on 'ninja' => :build
-  depends_on 'opencl-icd-loader'
-  depends_on 'openmp@19'
+  depends_on "llvm@19"
+  depends_on "ninja" => :build
+  depends_on "opencl-icd-loader"
+  depends_on "openmp@19"
 
   def install
     platforms_code = <<~EOS
@@ -40,9 +40,9 @@ class AdaptiveCppAT2410 < Formula
       }
     EOS
 
-    ENV.append 'CFLAGS', "-I#{Formula['openmp@19'].opt_include} -I#{Formula['libclc@19'].opt_include}"
-    ENV.append 'CXXFLAGS', "-I#{Formula['openmp@19'].opt_include} -I#{Formula['libclc@19'].opt_include}"
-    ENV.append 'LDFLAGS',
+    ENV.append "CFLAGS", "-I#{Formula['openmp@19'].opt_include} -I#{Formula['libclc@19'].opt_include}"
+    ENV.append "CXXFLAGS", "-I#{Formula['openmp@19'].opt_include} -I#{Formula['libclc@19'].opt_include}"
+    ENV.append "LDFLAGS",
                "-L#{Formula['libclc@19'].opt_lib} -L#{Formula['openmp@19'].opt_lib} -L#{Formula['opencl-icd-loader'].opt_lib}"
 
     args = %W[
@@ -55,19 +55,19 @@ class AdaptiveCppAT2410 < Formula
       -DWITH_OPENCL_BACKEND=ON
     ]
 
-    system 'cmake', '-G', 'Ninja', '-S', '.', '-B', 'build', *(std_cmake_args + args)
-    system 'cmake', '--build', 'build'
-    system 'cmake', '--build', 'build', '--target', 'install'
+    system "cmake", "-G", "Ninja", "-S", ".", "-B", "build", *(std_cmake_args + args)
+    system "cmake", "--build", "build"
+    system "cmake", "--build", "build", "--target", "install"
 
-    (buildpath / 'build/platforms.cpp').write(platforms_code)
+    (buildpath / "build/platforms.cpp").write(platforms_code)
 
-    system "#{bin}/acpp", '-O3', 'build/platforms.cpp', '-o', 'build/platforms'
-    ohai 'Running the SYCL example to list supported platforms and devices:'
+    system "#{bin}/acpp", "-O3", "build/platforms.cpp", "-o", "build/platforms"
+    ohai "Running the SYCL example to list supported platforms and devices:"
     puts `./build/platforms`
-    ohai 'AdaptiveCpp installation completed'
+    ohai "AdaptiveCpp installation completed"
   end
 
   test do
-    system "#{bin}/acpp", '--version'
+    system "#{bin}/acpp", "--version"
   end
 end
