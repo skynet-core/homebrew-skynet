@@ -16,12 +16,12 @@ class SpirvLlvmTranslatorAT19 < Formula
   depends_on :linux
 
   def install
-    ENV.append "LDFLAGS", "-Wl,-rpath,#{rpath(target: Formula['llvm@19'].opt_lib)}" if OS.linux?
+    ENV.append "LDFLAGS", "-Wl,-rpath,#{rpath(target: Formula["llvm@19"].opt_lib)}" if OS.linux?
     system "cmake", "-S", ".", "-B", "build",
            "-DBUILD_SHARED_LIBS=ON",
            "-DCMAKE_INSTALL_RPATH=#{rpath}",
            "-DLLVM_BUILD_TOOLS=ON",
-           "-DLLVM_EXTERNAL_SPIRV_HEADERS_SOURCE_DIR=#{Formula['spirv-headers'].opt_prefix}",
+           "-DLLVM_EXTERNAL_SPIRV_HEADERS_SOURCE_DIR=#{Formula["spirv-headers"].opt_prefix}",
            *std_cmake_args
     system "cmake", "--build", "build"
     system "cmake", "--install", "build"

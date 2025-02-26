@@ -21,9 +21,9 @@ class OpenmpAT19 < Formula
   def install
     omppath = buildpath / "openmp"
     args = %W[
-      -DCMAKE_C_COMPILER=#{Formula['llvm@19'].opt_bin / 'clang'}
-      -DCMAKE_CXX_COMPILER=#{Formula['llvm@19'].opt_bin / 'clang++'}
-      -DCMAKE_LINKER=#{Formula['llvm@19'].opt_bin / 'llvm-link'}
+      -DCMAKE_C_COMPILER=#{Formula["llvm@19"].opt_bin / "clang"}
+      -DCMAKE_CXX_COMPILER=#{Formula["llvm@19"].opt_bin / "clang++"}
+      -DCMAKE_LINKER=#{Formula["llvm@19"].opt_bin / "llvm-link"}
       -DOPENMP_STANDALONE_BUILD=ON
       -DENABLE_LIBOMPTARGET=ON
     ]

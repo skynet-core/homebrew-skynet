@@ -3,3 +3,5 @@ Style/StringLiterals:
   SupportedStyles:
     - double_quotes
     - single_quotes
+Style/StringLiteralsInInterpolation:
+  EnforcedStyle: double_quotes

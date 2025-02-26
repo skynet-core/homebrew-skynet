@@ -14,8 +14,8 @@ class AdaptiveCppAT2410 < Formula
 
   keg_only :versioned_formula
 
-  depends_on "boost"
   depends_on "cmake" => :build
+  depends_on "boost"
   depends_on "libclc@19"
   depends_on :linux
   depends_on "llvm@19"
@@ -40,18 +40,18 @@ class AdaptiveCppAT2410 < Formula
       }
     EOS
 
-    ENV.append "CFLAGS", "-I#{Formula['openmp@19'].opt_include} -I#{Formula['libclc@19'].opt_include}"
-    ENV.append "CXXFLAGS", "-I#{Formula['openmp@19'].opt_include} -I#{Formula['libclc@19'].opt_include}"
+    ENV.append "CFLAGS", "-I#{Formula["openmp@19"].opt_include} -I#{Formula["libclc@19"].opt_include}"
+    ENV.append "CXXFLAGS", "-I#{Formula["openmp@19"].opt_include} -I#{Formula["libclc@19"].opt_include}"
     ENV.append "LDFLAGS",
-               "-L#{Formula['libclc@19'].opt_lib} -L#{Formula['openmp@19'].opt_lib} -L#{Formula['opencl-icd-loader'].opt_lib}"
+               "-L#{Formula["libclc@19"].opt_lib} -L#{Formula["openmp@19"].opt_lib} -L#{Formula["opencl-icd-loader"].opt_lib}"
 
     args = %W[
-      -DCMAKE_C_COMPILER=#{Formula['llvm@19'].opt_bin / 'clang'}
-      -DCMAKE_CXX_COMPILER=#{Formula['llvm@19'].opt_bin / 'clang++'}
+      -DCMAKE_C_COMPILER=#{Formula["llvm@19"].opt_bin / "clang"}
+      -DCMAKE_CXX_COMPILER=#{Formula["llvm@19"].opt_bin / "clang++"}
       -DCMAKE_CXX_STANDARD=17
-      -DCMAKE_LINKER=#{Formula['llvm@19'].opt_bin / 'llvm-link'}
-      -DLLVM_DIR=#{Formula['llvm@19'].opt_lib / 'llvm/cmake/llvm'}
-      -DBOOST_ROOT=#{Formula['boost']}
+      -DCMAKE_LINKER=#{Formula["llvm@19"].opt_bin / "llvm-link"}
+      -DLLVM_DIR=#{Formula["llvm@19"].opt_lib / "llvm/cmake/llvm"}
+      -DBOOST_ROOT=#{Formula["boost"]}
       -DWITH_OPENCL_BACKEND=ON
     ]
 
