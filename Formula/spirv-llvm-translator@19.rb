@@ -12,7 +12,7 @@ class SpirvLlvmTranslatorAT19 < Formula
   depends_on :linux
 
   def llvm
-    deps.map(&:to_formula).find { |f| f.name.match?(/^llvm@19$/) }
+    deps.map(&:to_formula).find { |f| f.name.match?(/llvm@19/) }
   end
 
   def install
