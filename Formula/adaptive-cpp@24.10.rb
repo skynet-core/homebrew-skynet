@@ -40,7 +40,8 @@ class AdaptiveCppAT2410 < Formula
 
     ENV.append "CFLAGS", "-I#{Formula["openmp@19"].opt_include} -I#{Formula["libclc@19"].opt_include}"
     ENV.append "CXXFLAGS", "-I#{Formula["openmp@19"].opt_include} -I#{Formula["libclc@19"].opt_include}"
-    ENV.append "LDFLAGS", "-L#{Formula["libclc@19"].opt_lib} -L#{Formula["openmp@19"].opt_lib} -L#{Formula["opencl-icd-loader"].opt_lib}"
+    ENV.append "LDFLAGS", "-L#{Formula["libclc@19"].opt_lib} -L#{Formula["openmp@19"].opt_lib} 
+      -L#{Formula["opencl-icd-loader"].opt_lib}"
 
     args = %W[
       -DCMAKE_C_COMPILER=#{Formula["llvm@19"].opt_bin/"clang"}
