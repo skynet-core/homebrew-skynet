@@ -51,6 +51,7 @@ DEPENDENCIES
   rubocop
   ruby-lsp
   sorbet
+  sorbet-runtime
 
 BUNDLED WITH
    2.6.5

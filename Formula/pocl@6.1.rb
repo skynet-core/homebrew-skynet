@@ -1,10 +1,10 @@
 class PoclAT61 < Formula
   desc "Portable Computing Language"
   homepage "https://portablecl.org"
-  license "MIT"
-  revision 1
   url "https://github.com/pocl/pocl/archive/refs/heads/release_6_1.tar.gz"
   sha256 "2679f288c72183ec23611c915f87ee0566d01a7bc7000b0e9896bebd1a54b0de"
+  license "MIT"
+  revision 1
 
   livecheck do
     url :stable
@@ -14,13 +14,13 @@ class PoclAT61 < Formula
   keg_only :versioned_formula
 
   depends_on "cmake" => :build
-  depends_on "llvm@19"
-  depends_on :linux
   depends_on "opencl-headers" => :build
   depends_on "pkgconf" => :build
-  depends_on "hwloc"
-  depends_on "opencl-icd-loader"
   depends_on "python" => :build
+  depends_on "hwloc"
+  depends_on :linux
+  depends_on "llvm@19"
+  depends_on "opencl-icd-loader"
 
   def install
     # Install the ICD into #{prefix}/etc rather than #{etc} as it contains the realpath

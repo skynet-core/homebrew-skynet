@@ -16,8 +16,8 @@ class LibclcAT19 < Formula
 
   depends_on "cmake" => :build
   depends_on "llvm@19" => [:build, :test]
-  depends_on :linux
   depends_on "spirv-llvm-translator@19" => :build
+  depends_on :linux
 
   def install
     llvm_spirv = Formula["spirv-llvm-translator@19"].opt_bin / "llvm-spirv"

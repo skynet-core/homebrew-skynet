@@ -14,9 +14,9 @@ class OpenmpAT19 < Formula
   keg_only :versioned_formula
 
   depends_on "cmake" => :build
-  depends_on "llvm@19"
-  depends_on :linux
   depends_on "ninja" => :build
+  depends_on :linux
+  depends_on "llvm@19"
 
   def install
     omppath = buildpath / "openmp"

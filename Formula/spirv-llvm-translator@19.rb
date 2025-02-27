@@ -12,8 +12,8 @@ class SpirvLlvmTranslatorAT19 < Formula
   depends_on "cmake" => :build
   depends_on "pkgconf" => :build
   depends_on "spirv-headers" => :build
-  depends_on "llvm@19"
   depends_on :linux
+  depends_on "llvm@19"
 
   def install
     ENV.append "LDFLAGS", "-Wl,-rpath,#{rpath(target: Formula["llvm@19"].opt_lib)}" if OS.linux?

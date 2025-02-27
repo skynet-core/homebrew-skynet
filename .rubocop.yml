@@ -1,14 +1,39 @@
+Layout/LineLength:
+  Max: 118
+
+Layout/SpaceAroundOperators:
+  Enabled: false
+
 Style/StringLiterals:
   EnforcedStyle: double_quotes
-  SupportedStyles:
-    - double_quotes
-    - single_quotes
+
 Style/StringLiteralsInInterpolation:
   EnforcedStyle: double_quotes
-Layout/LineLength:
-  Max: 126
+
+Style/StringMethods:
+  Enabled: true
+
+Style/SuperWithArgsParentheses:
+  Enabled: false
+
 Style/SymbolArray:
   EnforcedStyle: brackets
-  SupportedStyles:
-    - brackets
-    - percent
+
+Style/TernaryParentheses:
+  EnforcedStyle: require_parentheses_when_complex
+
+Style/TopLevelMethodDefinition:
+  Enabled: true
+
+Style/TrailingCommaInArguments:
+  EnforcedStyleForMultiline: comma
+Style/TrailingCommaInArrayLiteral:
+  EnforcedStyleForMultiline: comma
+Style/TrailingCommaInHashLiteral:
+  EnforcedStyleForMultiline: comma
+
+Style/UnlessLogicalOperators:
+  Enabled: true
+  EnforcedStyle: forbid_logical_operators
+Style/WordArray:
+  MinSize: 4
