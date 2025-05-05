@@ -2,6 +2,7 @@ class PoclAT61 < Formula
   desc "Portable Computing Language"
   homepage "https://portablecl.org"
   url "https://github.com/pocl/pocl/archive/refs/heads/release_6_1.tar.gz"
+  # url "https://github.com/pocl/pocl/archive/refs/tags/v6.0.tar.gz"
   sha256 "2679f288c72183ec23611c915f87ee0566d01a7bc7000b0e9896bebd1a54b0de"
   license "MIT"
   revision 1
@@ -15,6 +16,7 @@ class PoclAT61 < Formula
 
   depends_on "cmake" => :build
   depends_on "opencl-headers" => :build
+  depends_on "opencl-clhpp-headers" => :build
   depends_on "pkgconf" => :build
   depends_on "python" => :build
   depends_on "hwloc"
@@ -27,9 +29,9 @@ class PoclAT61 < Formula
     # to the shared library and needs to be kept up-to-date to work with an ICD loader.
     # This relies on `brew link` automatically creating and updating #{etc} symlinks.
     ENV.append "CFLAGS",
-               "-march=native"
+               "-march=native -I#{Formula["opencl-headers"].opt_include} -I#{Formula["opencl-clhpp-headers"].opt_include}"
     ENV.append "CXXFLAGS",
-               "-march=native"
+               "-march=native -I#{Formula["opencl-headers"].opt_include} -I#{Formula["opencl-clhpp-headers"].opt_include}"
     rpaths = [loader_path, rpath(source: lib / "pocl")]
     rpaths << Formula["llvm@19"].opt_lib.to_s
     args = %W[

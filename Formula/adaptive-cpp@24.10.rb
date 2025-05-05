@@ -40,14 +40,17 @@ class AdaptiveCppAT2410 < Formula
     EOS
 
     ENV.append "CFLAGS",
-               "-march=native -I#{Formula["openmp@19"].opt_include} -I#{Formula["opencl-icd-loader"].opt_include}"
+               "-mtune=native -march=native -I#{Formula["openmp@19"].opt_include}"
     ENV.append "CXXFLAGS",
-               "-march=native -I#{Formula["openmp@19"].opt_include} -I#{Formula["opencl-icd-loader"].opt_include}"
+               "-mtune=native -march=native -I#{Formula["openmp@19"].opt_include}"
     ENV.append "LDFLAGS",
                "-L#{Formula["openmp@19"].opt_lib} \
                 -L#{Formula["opencl-icd-loader"].opt_lib}"
+    ENV.append "LD_LIBRARY_PATH", Formula["opencl-icd-loader"].opt_lib.to_s
 
     args = %W[
+      -DCMAKE_MESSAGE_LOG_LEVEL=VERBOSE
+      -DCMAKE_POLICY_VERSION_MINIMUM=3.5
       -DCMAKE_BUILD_TYPE=Release
       -DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON
       -DCMAKE_C_COMPILER=#{Formula["llvm@19"].opt_bin / "clang"}
@@ -57,7 +60,8 @@ class AdaptiveCppAT2410 < Formula
       -DLLVM_DIR=#{Formula["llvm@19"].opt_lib / "cmake/llvm"}
       -DBOOST_ROOT=#{Formula["boost"]}
       -DWITH_OPENCL_BACKEND=ON
-      -DDOpenCL_LIBRARY=#{Formula["opencl-icd-loader"].opt_lib / "libOpenCL.so"}
+      -DOpenCL_LIBRARY=#{Formula["opencl-icd-loader"].opt_lib / "libOpenCL.so"}
+      --fresh
     ]
 
     system "cmake", "-G", "Ninja", "-S", ".", "-B", "build", *(std_cmake_args + args)

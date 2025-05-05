@@ -20,10 +20,21 @@ class LibclcAT19 < Formula
   depends_on :linux
 
   def install
+    ENV.append "CFLAGS",
+               "-mtune=native -march=native"
+    ENV.append "CXXFLAGS",
+               "-mtune=native -march=native"
+
     llvm_spirv = Formula["spirv-llvm-translator@19"].opt_bin / "llvm-spirv"
+
+    args = %w[
+      -DCMAKE_BUILD_TYPE=Release
+      -DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON
+    ]
+
     system "cmake", "-S", ".", "-B", "build",
            "-DLLVM_SPIRV=#{llvm_spirv}",
-           *std_cmake_args
+           *(std_cmake_args + args)
     system "cmake", "--build", "build"
     system "cmake", "--install", "build"
 
