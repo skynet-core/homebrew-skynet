@@ -4,6 +4,9 @@ Layout/LineLength:
 Layout/SpaceAroundOperators:
   Enabled: false
 
+Naming/FileName:
+  Enabled: false
+
 Style/StringLiterals:
   EnforcedStyle: double_quotes
 
@@ -27,13 +30,31 @@ Style/TopLevelMethodDefinition:
 
 Style/TrailingCommaInArguments:
   EnforcedStyleForMultiline: comma
+
 Style/TrailingCommaInArrayLiteral:
   EnforcedStyleForMultiline: comma
+
 Style/TrailingCommaInHashLiteral:
   EnforcedStyleForMultiline: comma
 
 Style/UnlessLogicalOperators:
   Enabled: true
   EnforcedStyle: forbid_logical_operators
+
 Style/WordArray:
   MinSize: 4
+
+Style/Documentation:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+AllCops:
+  Exclude:
+    - ".ruby-lsp/**/*"
+    - "node_modules/**/*"
+    - "vendor/**/*"
+    - "tmp/**/*"
+    - "bin/**/*"
+    - "log/**/*"

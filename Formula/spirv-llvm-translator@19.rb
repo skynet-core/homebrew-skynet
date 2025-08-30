@@ -28,14 +28,15 @@ class SpirvLlvmTranslatorAT19 < Formula
   end
 
   test do
-    (testpath / "test.ll").write <<~EOS
+    (testpath / "test.ll").write <<~END_OF_STR
       target datalayout = "e-i64:64-v16:16-v24:32-v32:32-v48:64-v96:128-v192:256-v256:256-v512:512-v1024:1024"
       target triple = "spir64-unknown-unknown"
 
       define spir_kernel void @foo() {
         ret void
       }
-    EOS
+    END_OF_STR
+
     system Formula["llvm@19"].opt_bin / "llvm-as", "test.ll"
     system bin / "llvm-spirv", "test.bc"
     assert_path_exists testpath / "test.spv"

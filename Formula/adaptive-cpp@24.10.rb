@@ -23,7 +23,7 @@ class AdaptiveCppAT2410 < Formula
   depends_on "openmp@19"
 
   def install
-    platforms_code = <<~EOS
+    platforms_code = <<~END_OF_STR
       #include <iostream>
       #include <sycl/sycl.hpp>
       int main() {
@@ -37,7 +37,7 @@ class AdaptiveCppAT2410 < Formula
         }
       return 0;
       }
-    EOS
+    END_OF_STR
 
     ENV.append "CFLAGS",
                "-mtune=native -march=native -I#{Formula["openmp@19"].opt_include}"
