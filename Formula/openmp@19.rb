@@ -3,7 +3,7 @@ class OpenmpAT19 < Formula
   homepage "https://llvm.org"
   url "https://github.com/llvm/llvm-project/releases/download/llvmorg-19.1.7/llvm-project-19.1.7.src.tar.xz"
   sha256 "82401fea7b79d0078043f7598b835284d6650a75b93e64b6f761ea7b63097501"
-  license "Apache-2.0" => "LLVM-exception"
+  license "Apache-2.0" => { with: "LLVM-exception" }
   livecheck do
     url :stable
     regex(%r{/^llvmorg[._-]v?(\d+(?:\.\d+)+)$/}i)
@@ -21,7 +21,7 @@ class OpenmpAT19 < Formula
     set_env
     rpaths = build_rpaths
     omppath = buildpath / "openmp"
-    args = cmake_args(rpaths)
+    args = cmake_common_args(rpaths) + cmake_args
     build_and_install(omppath, args)
   end
 
@@ -39,7 +39,7 @@ class OpenmpAT19 < Formula
     [loader_path, rpath(source: lib / "openmp@#{LLVM_MAJOR}"), Formula["llvm@#{LLVM_MAJOR}"].opt_lib.to_s]
   end
 
-  def cmake_args(rpaths)
+  def cmake_common_args(rpaths)
     [
       "-DCMAKE_BUILD_TYPE=Release", "-DCMAKE_LINKER_TYPE=LLD",
       "-DCMAKE_CXX_USING_LINKER_LLD=#{Formula["lld@#{LLVM_MAJOR}"].opt_bin / "lld"}",
@@ -47,7 +47,12 @@ class OpenmpAT19 < Formula
       "-DCMAKE_C_FLAGS=-O3 -march=native -mtune=native", "-DCMAKE_CXX_FLAGS=-O3 -march=native -mtune=native",
       "-DCMAKE_LINKER_FLAGS=-L#{Formula["llvm@#{LLVM_MAJOR}"].opt_lib}",
       "-DCMAKE_C_COMPILER=#{Formula["llvm@#{LLVM_MAJOR}"].opt_bin / "clang"}",
-      "-DCMAKE_CXX_COMPILER=#{Formula["llvm@#{LLVM_MAJOR}"].opt_bin / "clang++"}",
+      "-DCMAKE_CXX_COMPILER=#{Formula["llvm@#{LLVM_MAJOR}"].opt_bin / "clang++"}"
+    ]
+  end
+
+  def cmake_args
+    [
       "-DOPENMP_STANDALONE_BUILD=ON", "-DENABLE_LIBOMPTARGET=ON"
     ]
   end
