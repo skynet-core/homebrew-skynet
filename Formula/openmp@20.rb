@@ -1,0 +1,63 @@
+class OpenmpAT20 < Formula
+  desc "LLVM Project OpenMP Runtime"
+  homepage "https://llvm.org"
+  url "https://github.com/llvm/llvm-project/releases/download/llvmorg-20.1.8/llvm-project-20.1.8.src.tar.xz"
+  sha256 "6898f963c8e938981e6c4a302e83ec5beb4630147c7311183cf61069af16333d"
+  license "Apache-2.0" => { with: "LLVM-exception" }
+  livecheck do
+    url :stable
+    regex(%r{/^llvmorg[._-]v?(\d+(?:\.\d+)+)$/}i)
+  end
+
+  keg_only :versioned_formula
+  LLVM_MAJOR = 20
+  depends_on "cmake" => :build
+  depends_on "ninja" => :build
+  depends_on :linux
+  depends_on "llvm@#{LLVM_MAJOR}"
+  depends_on "lld@#{LLVM_MAJOR}"
+
+  def install
+    set_env
+    rpaths = build_rpaths
+    omppath = buildpath / "openmp"
+    args = cmake_common_args(rpaths) + cmake_args
+    build_and_install(omppath, args)
+  end
+
+  def build_and_install(source, args)
+    system "cmake", "-S", source, "-B", "build", *(std_cmake_args + args)
+    system "cmake", "--build", "build", "--parallel", Hardware::CPU.cores.to_s
+    system "cmake", "--install", "build"
+  end
+
+  def set_env
+    ENV.prepend_path "LD_LIBRARY_PATH", Formula["llvm@#{LLVM_MAJOR}"].opt_lib
+  end
+
+  def build_rpaths
+    [loader_path, rpath(source: opt_lib / "openmp@#{LLVM_MAJOR}"), Formula["llvm@#{LLVM_MAJOR}"].opt_lib.to_s]
+  end
+
+  def cmake_common_args(rpaths)
+    [
+      "-DCMAKE_BUILD_TYPE=Release", "-DCMAKE_LINKER_TYPE=LLD",
+      "-DCMAKE_CXX_USING_LINKER_LLD=#{Formula["lld@#{LLVM_MAJOR}"].opt_bin / "lld"}",
+      "-DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON", "-DCMAKE_INSTALL_RPATH=#{rpaths.join(";")}",
+      "-DCMAKE_C_FLAGS=-O3 -march=native -mtune=native", "-DCMAKE_CXX_FLAGS=-O3 -march=native -mtune=native",
+      "-DCMAKE_LINKER_FLAGS=-L#{Formula["llvm@#{LLVM_MAJOR}"].opt_lib}",
+      "-DCMAKE_C_COMPILER=#{Formula["llvm@#{LLVM_MAJOR}"].opt_bin / "clang"}",
+      "-DCMAKE_CXX_COMPILER=#{Formula["llvm@#{LLVM_MAJOR}"].opt_bin / "clang++"}"
+    ]
+  end
+
+  def cmake_args
+    [
+      "-DOPENMP_STANDALONE_BUILD=ON", "-DENABLE_LIBOMPTARGET=ON"
+    ]
+  end
+
+  test do
+    system "false"
+  end
+end

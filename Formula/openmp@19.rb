@@ -36,7 +36,7 @@ class OpenmpAT19 < Formula
   end
 
   def build_rpaths
-    [loader_path, rpath(source: lib / "openmp@#{LLVM_MAJOR}"), Formula["llvm@#{LLVM_MAJOR}"].opt_lib.to_s]
+    [loader_path, rpath(source: opt_lib / "openmp@#{LLVM_MAJOR}"), Formula["llvm@#{LLVM_MAJOR}"].opt_lib.to_s]
   end
 
   def cmake_common_args(rpaths)
