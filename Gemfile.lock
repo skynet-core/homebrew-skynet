@@ -10,11 +10,13 @@ GEM
     parser (3.3.9.0)
       ast (~> 2.4.1)
       racc
-    prism (1.4.0)
+    prism (1.9.0)
     racc (1.8.1)
     rainbow (3.1.1)
-    rbs (3.9.4)
+    rbs (4.0.2)
       logger
+      prism (>= 1.6.0)
+      tsort
     regexp_parser (2.11.2)
     rubocop (1.80.1)
       json (~> 2.3)
@@ -30,7 +32,7 @@ GEM
     rubocop-ast (1.46.0)
       parser (>= 3.3.7.2)
       prism (~> 1.4)
-    ruby-lsp (0.26.1)
+    ruby-lsp (0.26.9)
       language_server-protocol (~> 3.17.0)
       prism (>= 1.2, < 2.0)
       rbs (>= 3, < 5)
@@ -39,6 +41,7 @@ GEM
       sorbet-static (= 0.6.12473)
     sorbet-runtime (0.6.12473)
     sorbet-static (0.6.12473-x86_64-linux)
+    tsort (0.2.0)
     unicode-display_width (3.1.5)
       unicode-emoji (~> 4.0, >= 4.0.4)
     unicode-emoji (4.0.4)
